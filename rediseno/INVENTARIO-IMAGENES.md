@@ -7,7 +7,7 @@ Todas las imágenes provienen del **sitio oficial del club** (`www.rangersdetalc
 | Archivo local | Origen (URL) | Autor/crédito | Uso en la página | Permiso |
 |---|---|---|---|---|
 | `escudo.png` | `/wp-content/uploads/2019/04/cropped-cropped-logo-3-1-270x270.png` | Escudo oficial del club (marca) | Cabecera, favicon, módulo partido, historia, footer | Marca del club · pendiente |
-| `hero.jpg` | `/wp-content/uploads/2026/10/DSC6226-768x512.jpg` | No indicado en origen | Hero principal | © Rangers de Talca · pendiente |
+| `hero.jpg` | Entregada por el propietario (1063×709) | No indicado | Hero principal | © Rangers de Talca · pendiente |
 | `news-aforo.jpg` | `/wp-content/uploads/2026/10/FOTO-AFORO-COBRELOA-768x512.jpg` | No indicado | Noticia destacada (primer equipo) | © Rangers de Talca · pendiente |
 | `news-femenino.png` | `/wp-content/uploads/2026/10/Martina-e-Isidora-mundialistas-rojinegras-768x960.png` | No indicado | Noticia (fútbol femenino) | © Rangers de Talca · pendiente |
 | `news-formativo.jpg` | `/wp-content/uploads/2026/10/DSC5296-768x512.jpg` | No indicado | Noticia (fútbol formativo) y miniatura Rangers TV | © Rangers de Talca · pendiente |
