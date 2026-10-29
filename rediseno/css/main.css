@@ -15,7 +15,7 @@ a{color:inherit}
 .btn{display:inline-flex;align-items:center;justify-content:center;min-height:48px;padding:.7rem 1.5rem;font:700 1.05rem/1 var(--f-head);letter-spacing:.08em;text-transform:uppercase;text-decoration:none;border:2px solid transparent;clip-path:polygon(10px 0,100% 0,calc(100% - 10px) 100%,0 100%);transition:background-color .2s var(--ease),color .2s var(--ease),transform .2s var(--ease)}
 .btn-red{background:var(--red);color:#fff}
 .btn-red:hover{background:#fff;color:var(--black)}
-.btn-line{border-color:var(--warm);color:var(--warm);background:rgba(11,11,13,.5)}
+.btn-line{clip-path:none;border-color:var(--warm);color:var(--warm);background:rgba(11,11,13,.5)}
 .btn-line:hover{background:var(--warm);color:var(--black)}
 .btn:active{transform:translateY(1px)}
 
@@ -45,7 +45,7 @@ a{color:inherit}
  repeating-linear-gradient(105deg,var(--red) 0 70px,var(--black) 70px 140px) ,
  var(--black)}
 .hero-bg::after{content:"";position:absolute;inset:0;background:linear-gradient(90deg,var(--black) 5%,rgba(11,11,13,.55) 60%,rgba(11,11,13,.2))}
-.hero-in{max-width:1280px;width:100%;margin:0 auto}
+.hero-in{max-width:1248px;width:100%;margin:0 auto}
 .eyebrow{margin:0 0 12px;font:700 1rem var(--f-head);letter-spacing:.3em;text-transform:uppercase;color:var(--red);background:var(--black);display:inline-block;padding:2px 8px 2px 0}
 h1{margin:0 0 16px;font:800 clamp(3.4rem,13vw,8.5rem)/.9 var(--f-head);text-transform:uppercase;letter-spacing:-.005em;max-width:9ch}
 h1 em{font-style:normal;color:var(--red)}
