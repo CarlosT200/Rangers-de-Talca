@@ -9,6 +9,18 @@
      contenido queda visible (sin animación). */
   document.documentElement.classList.add("reveal-on");
 
+  /* ---------- Indicador de activo en el minimenú ---------- */
+  (function(){
+    var path = (location.pathname.split("/").pop() || "index.html");
+    var links = document.querySelectorAll(".mm-link");
+    for (var i = 0; i < links.length; i++){
+      var href = links[i].getAttribute("href") || "";
+      if (/^https?:/.test(href)) continue;
+      var file = href.split("#")[0].split("/").pop();
+      if (file && file === path && file !== "index.html"){ links[i].setAttribute("aria-current", "page"); }
+    }
+  })();
+
   /* ---------- Menú móvil con foco atrapado ---------- */
   var toggle = document.getElementById("navToggle");
   var menu = document.getElementById("mobileMenu");
@@ -172,6 +184,10 @@
       var whenEl = nm.querySelector(".nm-when"); if (whenEl){ whenEl.textContent = [pp.condicion, pp.hora, pp.fechaTexto].filter(Boolean).join(" · "); }
       if (pp.kickoff) nm.setAttribute("data-kickoff", pp.kickoff);
     }
+    var estado = (pp && pp.estadoClave) || "por_confirmar";
+    var estadoLabels = {programado:"Programado",por_confirmar:"Por confirmar",reprogramado:"Reprogramado",cancelado:"Cancelado",en_juego:"En juego",finalizado:"Finalizado"};
+    var stEl = nm.querySelector("[data-nm-state]");
+    if (stEl){ stEl.className = "nm-state nm-state--" + estado.replace(/_/g,"-"); stEl.textContent = estadoLabels[estado] || "Por confirmar"; }
     var kickoff = nm.getAttribute("data-kickoff");
     var target = kickoff ? new Date(kickoff).getTime() : NaN;
     var wrap = nm.querySelector(".nm-countdown");
@@ -199,8 +215,12 @@
       if (cd.mins) cd.mins.textContent = pad(m);
       if (cd.secs) cd.secs.textContent = pad(s);
     };
-    if (!isNaN(target)){ tick(); timer = setInterval(tick, 1000); }
-    else if (wrap){ wrap.innerHTML = '<span class="nm-live">Por confirmar</span>'; }
+    if (estado === "programado" && !isNaN(target)){ tick(); timer = setInterval(tick, 1000); }
+    else if (wrap){
+      var msg = estado === "en_juego" ? "¡En juego!" : estado === "finalizado" ? "Finalizado" :
+                estado === "cancelado" ? "Cancelado" : estado === "reprogramado" ? "Reprogramado" : "Por confirmar";
+      wrap.innerHTML = '<span class="nm-live">' + msg + '</span>';
+    }
   }
 
   /* ---------- Jugador destacado (datos editables desde data.js) ---------- */

@@ -17,6 +17,7 @@ window.RANGERS_DATA = {
     hora: "12:30 h",
     fechaTexto: "Fecha por confirmar",   // texto que se muestra
     kickoff: null,                       // ISO (p.ej. "2026-11-09T12:30:00-03:00") para activar el cronómetro; null = "Por confirmar"
+    estadoClave: "por_confirmar",        // programado | por_confirmar | reprogramado | cancelado | en_juego | finalizado
     competencia: "Liga de Ascenso 2026 · Última fecha",
     estadio: "Estadio Municipal Joaquín Muñoz García, Santa Cruz",
     estado: "Información por confirmar"
