@@ -14,6 +14,7 @@ Todas las imágenes provienen del **sitio oficial del club** (`www.rangersdetalc
 | `news-convenio.jpg` | `/wp-content/uploads/2026/10/Firma-de-Convenio-con-Rangers-7-768x512.jpg` | No indicado | Noticia (club/convenio) | © Rangers de Talca · pendiente |
 | `formativo-santacruz.webp` | Entregada por el propietario | No indicado | Noticia (fútbol formativo) y tarjeta en portada | © Rangers de Talca · pendiente |
 | `estadio.jpg` | `commons.wikimedia.org` → `Estadio_Fiscal_de_Talca_2024.jpg` | **ElPabloRN** | Página de Historia | **CC BY 4.0** (libre, con atribución) |
+| `jugadores/*` (48) | Sitio oficial → `wp-content/uploads/2026/03` y `2026/04` | Tarjetas oficiales del club | Plantel: primer equipo y femenino | © Rangers de Talca · pendiente (redimensionadas a 450px) |
 
 ## Pendientes de optimización
 - `news-femenino.png` (~1,0 MB, PNG 768×960): convertir a WebP/JPEG en una pasada posterior para aligerar.
