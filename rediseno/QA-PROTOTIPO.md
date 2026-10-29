@@ -101,5 +101,5 @@ Rama: `feat/4-rediseno-A` (PR #5). URL publicada: https://carlost200.github.io/R
 
 ### Pendientes conocidos (ver `TODO-PROTOTIPO.md`)
 - 🔧 Limpieza de CSS sin uso de la 1ª iteración.
-- 🎨 Menú hamburguesa de **subpáginas** aún usa la nav estándar (el de 2 grupos está en la portada).
+- ✅ Menú hamburguesa de 2 grupos (Competencia / Club y servicios / Más) en **todas** las páginas (portada + subpáginas).
 - 📋 Datos deportivos, fotografías definitivas, patrocinadores y textos legales a confirmar por el cliente.

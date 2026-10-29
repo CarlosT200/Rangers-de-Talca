@@ -29,7 +29,6 @@ pueda considerarse un sitio definitivo. Esta versión es un **prototipo** (no re
 - Datos del estadio: capacidad "Información por confirmar".
 
 ## Pendiente de diseño 🎨
-- Extender el **menú hamburguesa de 2 grupos** a las subpáginas (hoy está en la portada; las subpáginas usan la nav estándar).
 - Revisar variante de hero elegida (ver `hero-variantes.html`): el cliente mantiene la actual.
 - Afinar placeholders de producto si se incorporan fotos reales de la tienda.
 
@@ -42,7 +41,7 @@ pueda considerarse un sitio definitivo. Esta versión es un **prototipo** (no re
 ## Ya resuelto en el prototipo ✅
 - Publicación activa en GitHub Pages (preview) desde `rediseno/`.
 - `noindex` para que la vista previa no aparezca en buscadores.
-- Minimenú superior + menú móvil en grupos.
+- Minimenú superior + menú móvil en grupos (en todas las páginas).
 - Fondo rojinegro, estados de partido, placeholders SVG, accesibilidad base.
 - Optimización de imágenes pesadas.
 
