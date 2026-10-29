@@ -1,63 +1,275 @@
-<!doctype html>
-<html lang="es-CL">
+<!DOCTYPE html>
+<html lang="es" class="no-js">
 <head>
-<meta charset="utf-8">
+<meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>Rangers de Talca — Talca se viste de rojo y negro</title>
-<meta name="description" content="Portal del club Rangers de Talca: noticias, equipos, Rangers TV y entradas. Prototipo de rediseño (Entrega A).">
+<title>Rangers de Talca — El Decano del fútbol chileno</title>
+<meta name="description" content="Sitio del Club Social de Deportes Rangers de Talca. Noticias, equipos, entradas e historia rojinegra desde 1902.">
 <meta name="theme-color" content="#0B0B0D">
-<link rel="icon" href="https://www.rangersdetalca.com/portal/wp-content/uploads/2019/04/cropped-cropped-logo-3-1-32x32.png" sizes="32x32">
+<meta property="og:title" content="Rangers de Talca — Desde 1902">
+<meta property="og:description" content="El Decano del fútbol chileno. Rojo y negro, desde Talca al mundo.">
+<meta property="og:type" content="website">
+
+<!-- Habilita mejoras progresivas solo si hay JS (el contenido es visible sin JS) -->
+<script>document.documentElement.classList.remove('no-js');document.documentElement.classList.add('js');</script>
+
+<link rel="icon" type="image/png" href="assets/img/escudo.png">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Oswald:wght@400;500;600;700&family=Inter:wght@400;500;600&display=swap">
+<link rel="preload" as="image" href="assets/img/hero.jpg">
 <link rel="stylesheet" href="css/main.css">
-<script>document.documentElement.classList.add('js');</script>
 </head>
 <body>
-<a class="skip" href="#contenido">Saltar al contenido</a>
+<a class="skip-link" href="#contenido">Saltar al contenido</a>
 
+<!-- ======================= HEADER ======================= -->
 <header class="site-header" id="top">
-  <div class="bar">
-    <a class="brand" href="./" aria-label="Rangers de Talca, inicio">
-      <img class="crest" src="https://www.rangersdetalca.com/portal/wp-content/uploads/2019/04/cropped-cropped-logo-3-1-192x192.png" width="44" height="44" alt="">
-      <span class="wordmark">Rangers <small>de Talca</small></span>
+  <div class="wrap header-inner">
+    <a class="brand" href="#top" aria-label="Rangers de Talca — inicio">
+      <img src="assets/img/escudo.png" width="44" height="44" alt="Escudo de Rangers de Talca">
+      <span class="brand-text">
+        <strong>Rangers</strong>
+        <small>de Talca · 1902</small>
+      </span>
     </a>
-    <nav id="menu" class="nav" aria-label="Principal">
+
+    <nav class="main-nav" id="menu" aria-label="Navegación principal">
       <ul>
-        <li><a href="https://www.rangersdetalca.com/portal/club">Club</a></li>
-        <li><a href="https://www.rangersdetalca.com/portal/noticias">Noticias</a></li>
-        <li><a href="https://www.rangersdetalca.com/portal/equipos">Equipos</a></li>
-        <li><a href="https://www.rangersdetalca.com/portal/rangerstv">Rangers TV</a></li>
-        <li><a href="https://www.rangersstore.cl/" rel="noopener" target="_blank">Rangers Store <span class="ext" aria-hidden="true">↗</span><span class="sr">(sitio externo)</span></a></li>
+        <li><a href="#noticias">Noticias</a></li>
+        <li><a href="#equipos">Equipos</a></li>
+        <li><a href="#historia">Historia</a></li>
+        <li><a href="#tv">Rangers TV</a></li>
+        <li><a class="nav-ext" href="https://rangersstore.cl/" target="_blank" rel="noopener">Tienda <span aria-hidden="true">↗</span></a></li>
       </ul>
-      <a class="btn btn-red nav-cta" href="http://serviticket.cl/" rel="noopener" target="_blank">Entradas</a>
     </nav>
-    <button class="burger" type="button" aria-expanded="false" aria-controls="menu">
-      <span class="sr">Menú</span><span class="burger-lines" aria-hidden="true"></span>
-    </button>
+
+    <div class="header-cta">
+      <a class="btn btn-primary btn-sm" href="http://serviticket.cl/" target="_blank" rel="noopener">Entradas</a>
+      <button class="nav-toggle" id="navToggle" aria-expanded="false" aria-controls="mobileMenu" aria-label="Abrir menú">
+        <span class="nav-toggle-bars" aria-hidden="true"><span></span><span></span><span></span></span>
+      </button>
+    </div>
   </div>
 </header>
 
+<!-- ======================= MENÚ MÓVIL ======================= -->
+<div class="mobile-menu" id="mobileMenu" hidden>
+  <div class="mobile-menu-panel" role="dialog" aria-modal="true" aria-label="Menú">
+    <button class="mobile-close" id="navClose" aria-label="Cerrar menú">×</button>
+    <nav aria-label="Navegación móvil">
+      <ul>
+        <li><a href="#noticias">Noticias</a></li>
+        <li><a href="#equipos">Equipos</a></li>
+        <li><a href="#historia">Historia</a></li>
+        <li><a href="#tv">Rangers TV</a></li>
+        <li><a href="https://rangersstore.cl/" target="_blank" rel="noopener">Tienda ↗</a></li>
+      </ul>
+    </nav>
+    <a class="btn btn-primary btn-block" href="http://serviticket.cl/" target="_blank" rel="noopener">Comprar entradas</a>
+  </div>
+</div>
+
 <main id="contenido">
+
+  <!-- ======================= HERO ======================= -->
   <section class="hero" aria-labelledby="hero-title">
-    <div class="hero-bg" aria-hidden="true"></div>
-    <div class="hero-in">
-      <p class="eyebrow reveal">Club de Fútbol · Desde 1902</p>
-      <h1 id="hero-title" class="reveal">Talca se viste<br>de <em>rojo</em> y <span>negro</span></h1>
-      <p class="lead reveal">Noticias, equipos y entradas del club de la Región del Maule.</p>
-      <div class="actions reveal">
-        <a class="btn btn-red" href="http://serviticket.cl/" rel="noopener" target="_blank">Entradas</a>
-        <a class="btn btn-line" href="https://www.rangersdetalca.com/portal/noticias">Actualidad del club</a>
+    <div class="hero-media">
+      <img src="assets/img/hero.jpg" width="768" height="512" alt="Jugadores de Rangers de Talca en el campo" fetchpriority="high">
+      <div class="hero-scrim"></div>
+    </div>
+    <div class="wrap hero-content">
+      <p class="eyebrow reveal">El Decano del fútbol chileno</p>
+      <h1 id="hero-title" class="reveal">Talca se viste de <span class="accent">rojo y negro</span></h1>
+      <p class="hero-lead reveal">Más de un siglo de historia rojinegra. Vive al club dentro y fuera de la cancha: noticias, equipos y la pasión del Piducano.</p>
+      <div class="hero-actions reveal">
+        <a class="btn btn-primary" href="http://serviticket.cl/" target="_blank" rel="noopener">Entradas</a>
+        <a class="btn btn-ghost" href="#noticias">Actualidad del club</a>
       </div>
     </div>
-    <aside class="match reveal" aria-label="Próximo encuentro">
-      <p class="match-k">Próximo encuentro</p>
-      <p class="match-v">Por confirmar</p>
-      <p class="match-n">Se publicará con la información oficial del club.</p>
-    </aside>
+    <div class="hero-stripe" aria-hidden="true"></div>
   </section>
 
-  <section class="band" aria-label="Siguiente entrega">
-    <p>Entrega A · sistema visual, cabecera, menú móvil y hero. Las demás secciones llegan en la Entrega B.</p>
+  <!-- ======================= MÓDULO PARTIDO ======================= -->
+  <section class="match" aria-label="Próximo encuentro">
+    <div class="wrap match-inner reveal">
+      <div class="match-badge" aria-hidden="true">
+        <img src="assets/img/escudo.png" width="56" height="56" alt="">
+      </div>
+      <div class="match-info">
+        <p class="match-kicker">Próximo encuentro</p>
+        <p class="match-title">Por confirmar</p>
+        <p class="match-note">La fecha y el rival se publicarán cuando el club los confirme oficialmente.</p>
+      </div>
+      <a class="btn btn-outline" href="https://www.rangersdetalca.com/portal/" target="_blank" rel="noopener">Ver calendario del club</a>
+    </div>
   </section>
+
+  <!-- ======================= NOTICIAS ======================= -->
+  <section class="section news" id="noticias" aria-labelledby="news-title">
+    <div class="wrap">
+      <header class="section-head reveal">
+        <h2 id="news-title" class="section-title">Actualidad <span class="accent">rojinegra</span></h2>
+        <a class="section-link" href="https://www.rangersdetalca.com/portal/category/noticias" target="_blank" rel="noopener">Todas las noticias ↗</a>
+      </header>
+
+      <div class="news-grid">
+        <!-- Destacada -->
+        <article class="news-card news-card--feature reveal">
+          <a class="news-media" href="https://www.rangersdetalca.com/portal/aforo-confirmado-para-el-duelo-entre-rangers-y-cobreloa" target="_blank" rel="noopener">
+            <img src="assets/img/news-aforo.jpg" width="768" height="512" alt="Hinchada rojinegra en el estadio" loading="lazy">
+            <span class="news-tag">Primer equipo</span>
+          </a>
+          <div class="news-body">
+            <h3><a href="https://www.rangersdetalca.com/portal/aforo-confirmado-para-el-duelo-entre-rangers-y-cobreloa" target="_blank" rel="noopener">Aforo confirmado para el duelo entre Rangers y Cobreloa</a></h3>
+            <p>Toda la información del operativo y el aforo para uno de los partidos más esperados de la temporada en el Estadio Fiscal de Talca.</p>
+          </div>
+        </article>
+
+        <!-- Secundarias -->
+        <article class="news-card reveal">
+          <a class="news-media" href="https://www.rangersdetalca.com/portal/futbolistas-de-rangers-de-talca-fueron-parte-del-debut-de-la-roja-femenina-sub-17-en-el-mundial-de-marruecos-2026" target="_blank" rel="noopener">
+            <img src="assets/img/news-femenino.png" width="768" height="960" alt="Jugadoras rojinegras mundialistas" loading="lazy">
+            <span class="news-tag news-tag--fem">Fútbol femenino</span>
+          </a>
+          <div class="news-body">
+            <h3><a href="https://www.rangersdetalca.com/portal/futbolistas-de-rangers-de-talca-fueron-parte-del-debut-de-la-roja-femenina-sub-17-en-el-mundial-de-marruecos-2026" target="_blank" rel="noopener">Rojinegras en el debut de La Roja Femenina Sub-17 en Marruecos 2026</a></h3>
+          </div>
+        </article>
+
+        <article class="news-card reveal">
+          <a class="news-media" href="https://www.rangersdetalca.com/portal/rangers-cierra-una-positiva-jornada-del-futbol-formativo-con-importantes-triunfos-ante-osorno-y-santa-cruz" target="_blank" rel="noopener">
+            <img src="assets/img/news-formativo.jpg" width="768" height="512" alt="Fútbol formativo de Rangers" loading="lazy">
+            <span class="news-tag news-tag--for">Fútbol formativo</span>
+          </a>
+          <div class="news-body">
+            <h3><a href="https://www.rangersdetalca.com/portal/rangers-cierra-una-positiva-jornada-del-futbol-formativo-con-importantes-triunfos-ante-osorno-y-santa-cruz" target="_blank" rel="noopener">Positiva jornada del fútbol formativo ante Osorno y Santa Cruz</a></h3>
+          </div>
+        </article>
+
+        <article class="news-card reveal">
+          <a class="news-media" href="https://www.rangersdetalca.com/portal/rangers-y-san-rafael-firman-convenio-de-colaboracion-mutua" target="_blank" rel="noopener">
+            <img src="assets/img/news-convenio.jpg" width="768" height="512" alt="Firma de convenio de Rangers con San Rafael" loading="lazy">
+            <span class="news-tag">Club</span>
+          </a>
+          <div class="news-body">
+            <h3><a href="https://www.rangersdetalca.com/portal/rangers-y-san-rafael-firman-convenio-de-colaboracion-mutua" target="_blank" rel="noopener">Rangers y San Rafael firman convenio de colaboración mutua</a></h3>
+          </div>
+        </article>
+      </div>
+    </div>
+  </section>
+
+  <!-- ======================= EQUIPOS ======================= -->
+  <section class="section teams" id="equipos" aria-labelledby="teams-title">
+    <div class="wrap">
+      <header class="section-head reveal">
+        <h2 id="teams-title" class="section-title">Nuestros <span class="accent">equipos</span></h2>
+        <a class="section-link" href="https://www.rangersdetalca.com/portal/equipos" target="_blank" rel="noopener">Ver plantel oficial ↗</a>
+      </header>
+      <div class="teams-grid">
+        <a class="team-card reveal" href="https://www.rangersdetalca.com/portal/equipos" target="_blank" rel="noopener">
+          <span class="team-num" aria-hidden="true">01</span>
+          <h3>Primer equipo</h3>
+          <p>El plantel profesional rojinegro en el Campeonato de Ascenso.</p>
+          <span class="team-go" aria-hidden="true">Ver plantel →</span>
+        </a>
+        <a class="team-card reveal" href="https://www.rangersdetalca.com/portal/equipos" target="_blank" rel="noopener">
+          <span class="team-num" aria-hidden="true">02</span>
+          <h3>Fútbol femenino</h3>
+          <p>Las rojinegras que representan a Rangers y a Chile en todas las categorías.</p>
+          <span class="team-go" aria-hidden="true">Ver plantel →</span>
+        </a>
+        <a class="team-card reveal" href="https://www.rangersdetalca.com/portal/equipos" target="_blank" rel="noopener">
+          <span class="team-num" aria-hidden="true">03</span>
+          <h3>Fútbol formativo</h3>
+          <p>La cantera del Decano: el futuro rojinegro desde las series menores.</p>
+          <span class="team-go" aria-hidden="true">Ver plantel →</span>
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <!-- ======================= HISTORIA ======================= -->
+  <section class="section history" id="historia" aria-labelledby="history-title">
+    <div class="wrap history-inner">
+      <div class="history-text reveal">
+        <p class="eyebrow">Desde 1902</p>
+        <h2 id="history-title" class="section-title">Más de un siglo de <span class="accent">identidad rojinegra</span></h2>
+        <p>Fundado el 2 de noviembre de 1902 en Talca por familias de raíces escocesas, Rangers es uno de los clubes más antiguos del fútbol chileno, conocido como <strong>“El Decano”</strong>. Juega de local en el <strong>Estadio Fiscal de Talca</strong> y lleva sus colores rojo y negro con orgullo maulino.</p>
+        <ul class="facts">
+          <li><span class="fact-n">1902</span><span class="fact-l">Año de fundación</span></li>
+          <li><span class="fact-n">1970</span><span class="fact-l">Copa Libertadores</span></li>
+          <li><span class="fact-n">Talca</span><span class="fact-l">Estadio Fiscal</span></li>
+        </ul>
+        <a class="btn btn-outline" href="https://www.rangersdetalca.com/portal/club" target="_blank" rel="noopener">Conoce la historia</a>
+      </div>
+      <div class="history-art reveal" aria-hidden="true">
+        <div class="history-year">1902</div>
+        <img src="assets/img/escudo.png" width="200" height="200" alt="">
+      </div>
+    </div>
+  </section>
+
+  <!-- ======================= RANGERS TV ======================= -->
+  <section class="section tv" id="tv" aria-labelledby="tv-title">
+    <div class="wrap tv-inner reveal">
+      <div class="tv-text">
+        <p class="eyebrow">Rangers TV</p>
+        <h2 id="tv-title" class="section-title">Vive al club <span class="accent">por dentro</span></h2>
+        <p>Resúmenes, entrevistas y la previa de cada partido. Todo el contenido audiovisual rojinegro en un solo lugar.</p>
+        <a class="btn btn-primary" href="https://www.rangersdetalca.com/portal/" target="_blank" rel="noopener">Ir a Rangers TV</a>
+      </div>
+      <a class="tv-thumb" href="https://www.rangersdetalca.com/portal/" target="_blank" rel="noopener" aria-label="Abrir Rangers TV">
+        <img src="assets/img/news-formativo.jpg" width="768" height="512" alt="Contenido audiovisual de Rangers" loading="lazy">
+        <span class="tv-play" aria-hidden="true">▶</span>
+      </a>
+    </div>
+  </section>
+
+  <!-- ======================= COMUNIDAD / TIENDA ======================= -->
+  <section class="cta-strip" aria-label="Tienda oficial">
+    <div class="wrap cta-strip-inner reveal">
+      <div>
+        <h2 class="section-title">Luce los colores del <span class="accent">Decano</span></h2>
+        <p>Camiseta oficial, indumentaria y productos del club en la tienda rojinegra.</p>
+      </div>
+      <a class="btn btn-primary btn-lg" href="https://rangersstore.cl/" target="_blank" rel="noopener">Ir a la tienda ↗</a>
+    </div>
+  </section>
+
 </main>
+
+<!-- ======================= FOOTER ======================= -->
+<footer class="site-footer">
+  <div class="wrap footer-grid">
+    <div class="footer-brand">
+      <img src="assets/img/escudo.png" width="52" height="52" alt="Escudo de Rangers de Talca">
+      <p><strong>Club Social de Deportes Rangers</strong><br>Talca, Región del Maule, Chile · Desde 1902</p>
+    </div>
+    <nav class="footer-nav" aria-label="Enlaces del pie">
+      <h3>Club</h3>
+      <ul>
+        <li><a href="https://www.rangersdetalca.com/portal/club" target="_blank" rel="noopener">Historia</a></li>
+        <li><a href="https://www.rangersdetalca.com/portal/equipos" target="_blank" rel="noopener">Equipos</a></li>
+        <li><a href="https://www.rangersdetalca.com/portal/category/noticias" target="_blank" rel="noopener">Noticias</a></li>
+      </ul>
+    </nav>
+    <nav class="footer-nav" aria-label="Enlaces de hinchas">
+      <h3>Hinchas</h3>
+      <ul>
+        <li><a href="http://serviticket.cl/" target="_blank" rel="noopener">Entradas</a></li>
+        <li><a href="https://rangersstore.cl/" target="_blank" rel="noopener">Tienda oficial</a></li>
+        <li><a href="https://www.rangersdetalca.com/portal/" target="_blank" rel="noopener">Sitio oficial</a></li>
+      </ul>
+    </nav>
+  </div>
+  <div class="wrap footer-base">
+    <p>Rediseño de portada (prototipo) · Contenido e imágenes © Rangers de Talca, usados con fines de prototipo. No es el sitio oficial.</p>
+  </div>
+</footer>
+
+<button class="to-top" id="toTop" aria-label="Volver arriba" hidden>↑</button>
 
 <script src="js/main.js" defer></script>
 </body>

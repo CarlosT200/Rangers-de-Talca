@@ -1,42 +1,101 @@
+/* Rangers de Talca — interacciones de la portada
+   Mejora progresiva: si este archivo no carga, la página sigue siendo
+   usable (contenido visible, enlaces y menú por anclas funcionan). */
 (function () {
-  var btn = document.querySelector('.burger');
-  var nav = document.getElementById('menu');
-  var mq = window.matchMedia('(max-width: 899px)');
-  if (!btn || !nav) return;
+  "use strict";
 
-  function focusables() { return nav.querySelectorAll('a[href]'); }
-  function setOpen(open, restore) {
-    btn.setAttribute('aria-expanded', String(open));
-    nav.classList.toggle('open', open);
-    document.body.classList.toggle('menu-open', open);
-    if (open) { var f = focusables()[0]; if (f) f.focus(); }
-    else if (restore) btn.focus();
-  }
-  function sync() {
-    // en móvil el menú cerrado no debe ser alcanzable por teclado
-    if (mq.matches && btn.getAttribute('aria-expanded') !== 'true') nav.setAttribute('inert', '');
-    else nav.removeAttribute('inert');
-    if (!mq.matches) setOpen(false, false);
+  var reduceMotion = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+
+  /* ---------- Menú móvil con foco atrapado ---------- */
+  var toggle = document.getElementById("navToggle");
+  var menu = document.getElementById("mobileMenu");
+  var closeBtn = document.getElementById("navClose");
+  var lastFocused = null;
+
+  function focusable() {
+    return menu.querySelectorAll('a[href], button:not([disabled])');
   }
 
-  btn.addEventListener('click', function () {
-    var open = btn.getAttribute('aria-expanded') !== 'true';
-    nav.removeAttribute('inert');
-    setOpen(open, !open);
-    if (!open) sync();
-  });
-  document.addEventListener('keydown', function (e) {
-    if (e.key === 'Escape' && btn.getAttribute('aria-expanded') === 'true') { setOpen(false, true); sync(); return; }
-    if (e.key === 'Tab' && btn.getAttribute('aria-expanded') === 'true') {
-      var items = [btn].concat([].slice.call(focusables()));
-      var first = items[0], last = items[items.length - 1];
+  function openMenu() {
+    lastFocused = document.activeElement;
+    menu.hidden = false;
+    // fuerza reflow para que la transición de entrada se aplique
+    void menu.offsetWidth;
+    menu.classList.add("is-open");
+    document.body.classList.add("menu-open");
+    toggle.setAttribute("aria-expanded", "true");
+    var f = focusable();
+    if (f.length) f[0].focus();
+    document.addEventListener("keydown", onKeydown);
+  }
+
+  function closeMenu() {
+    menu.classList.remove("is-open");
+    document.body.classList.remove("menu-open");
+    toggle.setAttribute("aria-expanded", "false");
+    document.removeEventListener("keydown", onKeydown);
+    var finish = function () {
+      menu.hidden = true;
+      menu.removeEventListener("transitionend", finish);
+    };
+    if (reduceMotion) finish();
+    else menu.addEventListener("transitionend", finish);
+    if (lastFocused) lastFocused.focus();
+  }
+
+  function onKeydown(e) {
+    if (e.key === "Escape") { closeMenu(); return; }
+    if (e.key === "Tab") {
+      var f = focusable();
+      if (!f.length) return;
+      var first = f[0], last = f[f.length - 1];
       if (e.shiftKey && document.activeElement === first) { e.preventDefault(); last.focus(); }
       else if (!e.shiftKey && document.activeElement === last) { e.preventDefault(); first.focus(); }
     }
-  });
-  nav.addEventListener('click', function (e) {
-    if (e.target.closest('a') && mq.matches) { setOpen(false, false); sync(); }
-  });
-  (mq.addEventListener ? mq.addEventListener.bind(mq, 'change') : mq.addListener.bind(mq))(sync);
-  sync();
+  }
+
+  if (toggle && menu && closeBtn) {
+    toggle.addEventListener("click", openMenu);
+    closeBtn.addEventListener("click", closeMenu);
+    menu.addEventListener("click", function (e) {
+      if (e.target === menu) closeMenu();               // click en el velo
+    });
+    // cerrar al pulsar un enlace del menú
+    menu.querySelectorAll("a[href]").forEach(function (a) {
+      a.addEventListener("click", closeMenu);
+    });
+  }
+
+  /* ---------- Reveal al entrar en viewport (una sola vez) ---------- */
+  var reveals = document.querySelectorAll(".reveal");
+  if (reduceMotion || !("IntersectionObserver" in window)) {
+    reveals.forEach(function (el) { el.classList.add("is-visible"); });
+  } else {
+    var io = new IntersectionObserver(function (entries) {
+      entries.forEach(function (entry) {
+        if (entry.isIntersecting) {
+          entry.target.classList.add("is-visible");
+          io.unobserve(entry.target);
+        }
+      });
+    }, { rootMargin: "0px 0px -8% 0px", threshold: 0.12 });
+    reveals.forEach(function (el) { io.observe(el); });
+  }
+
+  /* ---------- Botón volver arriba ---------- */
+  var toTop = document.getElementById("toTop");
+  if (toTop) {
+    var onScroll = function () {
+      if (window.scrollY > 600) toTop.hidden = false;
+      // pequeño retraso para permitir la transición tras quitar [hidden]
+      requestAnimationFrame(function () {
+        toTop.classList.toggle("show", window.scrollY > 600);
+      });
+    };
+    window.addEventListener("scroll", onScroll, { passive: true });
+    onScroll();
+    toTop.addEventListener("click", function () {
+      window.scrollTo({ top: 0, behavior: reduceMotion ? "auto" : "smooth" });
+    });
+  }
 })();
