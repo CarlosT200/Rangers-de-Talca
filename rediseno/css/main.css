@@ -568,7 +568,7 @@ body.menu-open{overflow:hidden}
 /* ---- Hinchada / comunidad ---- */
 .fans{position:relative;overflow:hidden;background:var(--negro)}
 .fans-bg{position:absolute;inset:0;z-index:0}
-.fans-bg img{width:100%;height:100%;object-fit:cover;opacity:.25}
+.fans-bg img{width:100%;height:100%;object-fit:cover;opacity:.14}
 .fans::after{content:"";position:absolute;inset:0;z-index:1;background:linear-gradient(90deg,rgba(11,11,13,.92),rgba(11,11,13,.55))}
 .fans-inner{position:relative;z-index:2;max-width:640px}
 .fans-quote{font-family:var(--f-title);font-size:clamp(1.3rem,1rem + 2vw,2rem);color:#fff;margin:.6rem 0;line-height:1.2;border-left:4px solid var(--rojo);padding-left:1rem}
@@ -623,18 +623,24 @@ body.menu-open{overflow:hidden}
 
 /* ---- Fondo general rojinegro (capas fijas tras el contenido) ---- */
 body{background:#0a0a0c}
-body::before{content:"";position:fixed;inset:0;z-index:-2;pointer-events:none;
+/* Fondo rojinegro de respaldo (capa fija detrás de todo) */
+body::before{content:"";position:fixed;inset:0;z-index:-1;pointer-events:none;
   background:
-    radial-gradient(1100px 560px at 12% -8%, rgba(215,25,32,.16), transparent 58%),
-    radial-gradient(900px 640px at 92% 6%, rgba(120,12,16,.14), transparent 55%),
-    radial-gradient(1000px 900px at 50% 120%, rgba(215,25,32,.07), transparent 60%),
-    linear-gradient(180deg,#09090b,#0d0c10 45%,#09090b);
-  animation:bgGlow 22s ease-in-out infinite alternate}
-body::after{content:"";position:fixed;inset:0;z-index:-1;pointer-events:none;opacity:.035;
-  background-image:repeating-linear-gradient(135deg,#fff 0 1px,transparent 1px 26px)}
-@keyframes bgGlow{from{opacity:.82}to{opacity:1}}
-/* secciones que dejan ver el fondo (alternan con paneles carbón) */
-.news,.featured,.fans,.history,.sponsors{background:transparent}
+    radial-gradient(1200px 720px at 8% -6%, rgba(215,25,32,.22), transparent 56%),
+    radial-gradient(1000px 720px at 100% 8%, rgba(150,12,18,.18), transparent 52%),
+    radial-gradient(1100px 900px at 50% 122%, rgba(215,25,32,.12), transparent 60%),
+    linear-gradient(180deg,#0a0a0c,#13070a 50%,#0a0a0c)}
+/* Secciones OPACAS con diseño rojinegro: el texto y las imágenes nunca
+   se trasluce; el conjunto de la página se ve rojo y negro, llamativo. */
+.news{background:radial-gradient(900px 500px at 100% 0%, rgba(215,25,32,.16), transparent 55%), #0a0a0c}
+.featured{background:linear-gradient(160deg,#19070b,#0b0a0d)}
+.history{background:radial-gradient(840px 540px at 0% 14%, rgba(215,25,32,.15), transparent 55%), #0a0a0c}
+.fans{background:#0b0a0d}
+.sponsors{background:#0a0a0c}
+.teams{background:linear-gradient(170deg,#141217,#0e0c10)}
+.stadium{background:linear-gradient(170deg,#17090c,#0e0c10)}
+.tv{background:linear-gradient(170deg,#141217,#0e0c10)}
+.store{background:linear-gradient(170deg,#17090c,#0e0c10)}
 
 /* ---- Minimenú superior (barra secundaria bajo el encabezado) ---- */
 .mini-menu{display:none;background:rgba(9,9,12,.72);backdrop-filter:blur(10px);-webkit-backdrop-filter:blur(10px);
