@@ -4,6 +4,7 @@
 (function () {
   "use strict";
   var reduce = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+  var DATA = window.RANGERS_DATA || {};
 
   /* ---------- Menú móvil con foco atrapado ---------- */
   var toggle = document.getElementById("navToggle");
@@ -68,6 +69,7 @@
       });
     };
     window.addEventListener("load", revealInView);
+    window.addEventListener("scroll", revealInView, { passive:true });
     document.addEventListener("visibilitychange", function(){ if (!document.hidden) revealInView(); });
     setTimeout(revealInView, 1000);
   }
@@ -129,18 +131,44 @@
     }
   }
 
-  /* ---------- Marquees: duplica el contenido para bucle continuo ---------- */
+  /* ---------- Marquees: duplica el contenido (clones ocultos a lectores) ---------- */
   function seamless(track){
     if (!track) return;
-    var html = track.innerHTML;
-    track.innerHTML = html + html;   // dos copias -> translateX(-50%) encaja
+    var kids = Array.prototype.slice.call(track.children);
+    kids.forEach(function(node){
+      var clone = node.cloneNode(true);
+      clone.setAttribute("aria-hidden", "true");
+      if (clone.hasAttribute && clone.hasAttribute("href")) clone.setAttribute("tabindex", "-1");
+      var f = clone.querySelectorAll ? clone.querySelectorAll("a[href],button") : [];
+      for (var i = 0; i < f.length; i++) f[i].setAttribute("tabindex", "-1");
+      track.appendChild(clone);
+    });
   }
   seamless(document.querySelector(".ticker-track"));
   seamless(document.querySelector(".marquee-track"));
 
+  /* ---------- Pausar/reanudar el carrusel de auspiciadores ---------- */
+  var mqPause = document.getElementById("mqPause");
+  var sponsorsMarquee = document.getElementById("sponsorsMarquee");
+  if (mqPause && sponsorsMarquee){
+    mqPause.addEventListener("click", function(){
+      var paused = sponsorsMarquee.classList.toggle("is-paused");
+      mqPause.setAttribute("aria-pressed", paused ? "true" : "false");
+      var txt = mqPause.querySelector(".mq-pause-txt");
+      if (txt) txt.textContent = paused ? "Reanudar" : "Pausar";
+    });
+  }
+
   /* ---------- Cuenta regresiva del próximo partido ---------- */
   var nm = document.getElementById("nextMatch");
   if (nm){
+    var pp = DATA.proximoPartido;
+    if (pp){
+      var compEl = nm.querySelector(".nm-comp"); if (compEl && pp.competencia) compEl.textContent = pp.competencia;
+      var rivalEl = nm.querySelector(".nm-name"); if (rivalEl && (pp.rivalCorto || pp.rival)) rivalEl.textContent = pp.rivalCorto || pp.rival;
+      var whenEl = nm.querySelector(".nm-when"); if (whenEl){ whenEl.textContent = [pp.condicion, pp.hora, pp.fechaTexto].filter(Boolean).join(" · "); }
+      if (pp.kickoff) nm.setAttribute("data-kickoff", pp.kickoff);
+    }
     var kickoff = nm.getAttribute("data-kickoff");
     var target = kickoff ? new Date(kickoff).getTime() : NaN;
     var wrap = nm.querySelector(".nm-countdown");
@@ -170,5 +198,19 @@
     };
     if (!isNaN(target)){ tick(); timer = setInterval(tick, 1000); }
     else if (wrap){ wrap.innerHTML = '<span class="nm-live">Por confirmar</span>'; }
+  }
+
+  /* ---------- Jugador destacado (datos editables desde data.js) ---------- */
+  var fp = document.getElementById("featuredPlayer");
+  if (fp && DATA.jugadorDestacado){
+    var j = DATA.jugadorDestacado;
+    var setTxt = function(sel, val){ var e = fp.querySelector(sel); if (e && val != null) e.textContent = val; };
+    var fimg = fp.querySelector("[data-fp='foto']");
+    if (fimg && j.foto){ fimg.setAttribute("src", j.foto); fimg.setAttribute("alt", j.nombre || ""); }
+    setTxt("[data-fp='nombre']", j.nombre);
+    setTxt("[data-fp='posicion']", j.posicion);
+    setTxt("[data-fp='equipo']", j.equipo);
+    setTxt("[data-fp='cita']", j.cita);
+    setTxt("[data-fp='nota']", j.nota);
   }
 })();

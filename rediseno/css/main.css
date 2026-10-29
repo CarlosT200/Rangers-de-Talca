@@ -151,7 +151,7 @@ body.menu-open{overflow:hidden}
 .hero-glow{position:absolute;left:-10%;bottom:-20%;width:60%;height:70%;
   background:radial-gradient(circle,rgba(215,25,32,.35),transparent 60%);filter:blur(30px);animation:glow 7s ease-in-out infinite alternate}
 @keyframes glow{from{opacity:.5;transform:translateY(10px)}to{opacity:.9;transform:translateY(-10px)}}
-.hero-content{position:relative;z-index:2;padding:3rem 0 3.6rem}
+.hero-content{position:relative;z-index:2;padding:3rem clamp(20px,5vw,32px) 3.6rem}
 .hero h1{font-size:var(--h1);font-weight:700;margin:.2rem 0 1rem;max-width:15ch;text-shadow:0 2px 30px rgba(0,0,0,.4)}
 .hero-lead{color:#e7e7ea;font-size:clamp(1rem,.9rem + .5vw,1.15rem);max-width:46ch;margin:0 0 1.6rem}
 .hero-actions{display:flex;flex-wrap:wrap;gap:.8rem}
@@ -488,3 +488,130 @@ body.menu-open{overflow:hidden}
   transition:background var(--t-med),color var(--t-med),border-color var(--t-med)}
 .team-switch a:hover{color:#fff;border-color:rgba(255,59,67,.5)}
 .team-switch a.is-current{background:var(--rojo);color:#fff;border-color:var(--rojo)}
+
+/* ================================================================
+   REDISEÑO v2 — componentes nuevos
+   ================================================================ */
+
+/* ---- Accesos rápidos ---- */
+.quick-access{background:var(--carbon);border-bottom:1px solid var(--linea);position:relative;z-index:4}
+.qa-inner{display:flex;gap:.6rem;overflow-x:auto;padding:.8rem clamp(16px,4vw,32px);scrollbar-width:none;-webkit-overflow-scrolling:touch}
+.qa-inner::-webkit-scrollbar{display:none}
+.qa-item{flex:0 0 auto;display:inline-flex;align-items:center;gap:.5rem;padding:.55rem .95rem;border-radius:999px;
+  background:var(--carbon-2);border:1px solid var(--linea);color:var(--blanco);font-family:var(--f-title);
+  text-transform:uppercase;letter-spacing:.03em;font-size:.82rem;white-space:nowrap;
+  transition:transform var(--t-fast) var(--ease),border-color var(--t-med),background var(--t-med)}
+.qa-item:hover{transform:translateY(-2px);border-color:rgba(255,59,67,.5);background:#20202a}
+.qa-ico{font-size:1rem;line-height:1}
+@media (min-width:900px){.qa-inner{justify-content:center;flex-wrap:wrap;overflow:visible}}
+
+/* ---- Noticias: meta (fecha/categoría/lectura) ---- */
+.news-meta{display:flex;align-items:center;flex-wrap:wrap;gap:.5rem;margin:0 0 .3rem;font-size:.76rem;color:var(--gris-2)}
+.news-cat{font-family:var(--f-title);text-transform:uppercase;letter-spacing:.06em;font-size:.68rem;color:#fff;
+  background:var(--rojo);padding:.12rem .5rem;border-radius:4px}
+
+/* ---- Tarjetas de equipos con fondo ---- */
+.team-card--pe,.team-card--fem,.team-card--for{background-size:cover;background-position:center top}
+.team-card--pe{background-image:linear-gradient(to top,rgba(11,11,13,.96) 22%,rgba(11,11,13,.55)),url(../assets/img/hero.jpg?v=2)}
+.team-card--fem{background-image:linear-gradient(to top,rgba(11,11,13,.96) 22%,rgba(11,11,13,.5)),url(../assets/img/news-femenino.webp)}
+.team-card--for{background-image:linear-gradient(to top,rgba(11,11,13,.96) 22%,rgba(11,11,13,.5)),url(../assets/img/formativo-santacruz.webp)}
+
+/* ---- Jugador destacado ---- */
+.featured{background:var(--negro)}
+.fp-card{display:grid;grid-template-columns:1fr;background:linear-gradient(120deg,#1a0406,var(--carbon));
+  border:1px solid var(--linea);border-radius:var(--radio);overflow:hidden}
+.fp-photo{position:relative;aspect-ratio:4/5;max-height:440px;background:#111}
+.fp-photo img{width:100%;height:100%;object-fit:cover;object-position:top center}
+.fp-body{padding:1.4rem 1.5rem 1.6rem;display:flex;flex-direction:column;gap:.35rem;align-items:flex-start}
+.fp-badge{font-family:var(--f-title);text-transform:uppercase;letter-spacing:.06em;font-size:.72rem;color:#fff;background:var(--rojo);padding:.22rem .6rem;border-radius:4px}
+.fp-name{font-size:clamp(1.6rem,1.2rem + 1.5vw,2.2rem);text-transform:none;margin:.3rem 0 0}
+.fp-pos{color:var(--rojo-200);font-family:var(--f-title);text-transform:uppercase;letter-spacing:.05em;font-size:.9rem;margin:0}
+.fp-quote{color:#e7e7ea;font-size:1.05rem;margin:.4rem 0 0}
+.fp-note{color:var(--gris-2);font-size:.76rem;margin:.2rem 0 .6rem}
+@media (min-width:720px){.fp-card{grid-template-columns:300px 1fr;align-items:center}.fp-photo{height:100%;max-height:none;min-height:360px}}
+
+/* ---- Línea de tiempo (historia) ---- */
+.timeline{list-style:none;margin:0;padding:0;position:relative}
+.timeline::before{content:"";position:absolute;left:14px;top:6px;bottom:6px;width:2px;background:linear-gradient(var(--rojo),rgba(255,59,67,.15))}
+.tl-item{position:relative;padding:0 0 1.2rem 48px}
+.tl-item::before{content:"";position:absolute;left:7px;top:4px;width:16px;height:16px;border-radius:50%;background:var(--rojo);border:3px solid var(--negro)}
+.tl-year{font-family:var(--f-title);font-weight:700;color:var(--rojo-200);font-size:1.05rem;letter-spacing:.03em}
+.tl-card{margin-top:.3rem;background:var(--carbon);border:1px solid var(--linea);border-radius:var(--radio-sm);padding:.9rem 1.1rem}
+.tl-card h3{font-size:1.1rem;text-transform:none;margin:0 0 .25rem}
+.tl-card p{color:var(--gris);margin:0;font-size:.95rem}
+@media (min-width:760px){
+  .timeline::before{left:50%;transform:translateX(-50%)}
+  .tl-item{width:50%;padding:0 0 1.8rem 0}
+  .tl-item:nth-child(odd){margin-left:0;padding-right:40px;text-align:right}
+  .tl-item:nth-child(even){margin-left:50%;padding-left:40px}
+  .tl-item::before{left:auto;right:-8px}
+  .tl-item:nth-child(even)::before{left:-8px;right:auto}
+}
+
+/* ---- Estadio ---- */
+.stadium{background:var(--carbon)}
+.stadium-inner{display:grid;grid-template-columns:1fr;gap:1.6rem;align-items:center}
+.stadium-media{border-radius:var(--radio);overflow:hidden;border:1px solid var(--linea);box-shadow:var(--sombra)}
+.stadium-media img{width:100%;height:auto;object-fit:cover;aspect-ratio:16/10}
+.stadium-facts{list-style:none;margin:1rem 0 1.4rem;padding:0;display:flex;flex-direction:column;gap:.55rem}
+.stadium-facts li{display:flex;justify-content:space-between;gap:1rem;border-bottom:1px solid var(--linea);padding-bottom:.5rem}
+.stadium-facts span{color:var(--gris-2);text-transform:uppercase;font-size:.78rem;letter-spacing:.06em;font-family:var(--f-title)}
+.stadium-facts strong{color:#fff;text-align:right}
+@media (min-width:860px){.stadium-inner{grid-template-columns:1.2fr .8fr}}
+
+/* ---- Rangers TV extras ---- */
+.tv-dur{position:absolute;right:10px;bottom:10px;z-index:2;background:rgba(0,0,0,.8);color:#fff;font-family:var(--f-title);font-size:.78rem;padding:.2rem .5rem;border-radius:4px}
+.tv-caption{position:absolute;left:0;right:0;bottom:0;z-index:2;padding:1.6rem .9rem .7rem;display:flex;flex-direction:column;gap:.2rem;
+  background:linear-gradient(transparent,rgba(0,0,0,.88));color:#fff;font-size:.92rem;font-weight:600}
+.tv-vtag{align-self:flex-start;font-family:var(--f-title);text-transform:uppercase;letter-spacing:.06em;font-size:.62rem;color:var(--rojo-200)}
+
+/* ---- Hinchada / comunidad ---- */
+.fans{position:relative;overflow:hidden;background:var(--negro)}
+.fans-bg{position:absolute;inset:0;z-index:0}
+.fans-bg img{width:100%;height:100%;object-fit:cover;opacity:.25}
+.fans::after{content:"";position:absolute;inset:0;z-index:1;background:linear-gradient(90deg,rgba(11,11,13,.92),rgba(11,11,13,.55))}
+.fans-inner{position:relative;z-index:2;max-width:640px}
+.fans-quote{font-family:var(--f-title);font-size:clamp(1.3rem,1rem + 2vw,2rem);color:#fff;margin:.6rem 0;line-height:1.2;border-left:4px solid var(--rojo);padding-left:1rem}
+.fans p{color:var(--gris);max-width:52ch}
+.fans-actions{display:flex;flex-wrap:wrap;gap:.7rem;margin-top:1.2rem}
+
+/* ---- Rangers Store (prototipo) ---- */
+.store{background:var(--carbon)}
+.store-grid{display:grid;grid-template-columns:1fr;gap:1.2rem}
+.store-card{background:var(--carbon-2);border:1px solid var(--linea);border-radius:var(--radio);overflow:hidden;
+  transition:transform var(--t-med) var(--ease),border-color var(--t-med),box-shadow var(--t-med)}
+.store-card:hover{transform:translateY(-6px);border-color:rgba(255,59,67,.5);box-shadow:0 18px 36px rgba(0,0,0,.45)}
+.store-media{position:relative;aspect-ratio:16/10;display:flex;align-items:center;justify-content:center;
+  background:radial-gradient(circle at 50% 40%,rgba(215,25,32,.3),transparent 60%),linear-gradient(160deg,#20202a,#111115)}
+.store-ph{font-size:3.2rem}
+.store-badge{position:absolute;left:12px;top:12px;background:var(--rojo);color:#fff;font-family:var(--f-title);text-transform:uppercase;font-size:.7rem;letter-spacing:.06em;padding:.25rem .6rem;border-radius:5px}
+.store-body{padding:1.1rem 1.2rem 1.3rem;display:flex;flex-direction:column;gap:.4rem;align-items:flex-start}
+.store-body h3{font-size:1.15rem;text-transform:none}
+.store-body p{color:var(--gris);font-size:.9rem;margin:0}
+.store-price{font-family:var(--f-title);text-transform:uppercase;letter-spacing:.05em;font-size:.78rem;color:var(--gris-2)}
+.store-body .btn{margin-top:.3rem}
+.store-note{color:var(--gris-2);font-size:.82rem;margin:1.4rem 0 0}
+.store-note a{color:var(--rojo-200)}
+@media (min-width:640px){.store-grid{grid-template-columns:repeat(3,1fr)}}
+
+/* ---- Auspiciadores: cabecera + pausa ---- */
+.sponsors-head{display:flex;align-items:center;justify-content:space-between;gap:1rem;flex-wrap:wrap;margin-bottom:1.2rem}
+.sponsors-head .sponsors-title{margin:0}
+.mq-pause{display:inline-flex;align-items:center;gap:.4rem;background:var(--carbon);border:1px solid var(--linea);color:var(--gris);
+  font-family:var(--f-title);text-transform:uppercase;letter-spacing:.05em;font-size:.72rem;padding:.45rem .85rem;border-radius:999px;cursor:pointer;
+  transition:color var(--t-med),border-color var(--t-med)}
+.mq-pause:hover{color:#fff;border-color:rgba(255,59,67,.5)}
+#sponsorsMarquee.is-paused .marquee-track{animation-play-state:paused}
+
+/* ---- Tabla de posiciones (página) ---- */
+.demo-banner{display:flex;align-items:center;gap:.6rem;background:rgba(215,25,32,.12);border:1px solid rgba(255,59,67,.4);
+  border-radius:var(--radio-sm);padding:.7rem 1rem;color:#f3c9cc;font-size:.86rem;margin:0 0 1.4rem}
+.demo-banner strong{color:#fff}
+.standings{width:100%;border-collapse:collapse;font-size:.92rem;overflow:hidden;border-radius:var(--radio-sm);border:1px solid var(--linea)}
+.standings th,.standings td{padding:.7rem .8rem;text-align:left;border-bottom:1px solid var(--linea)}
+.standings thead th{background:var(--carbon);font-family:var(--f-title);text-transform:uppercase;letter-spacing:.05em;font-size:.72rem;color:var(--gris)}
+.standings td.num,.standings th.num{text-align:center;width:48px}
+.standings tbody tr{background:var(--carbon-2)}
+.standings tbody tr.is-rangers{background:linear-gradient(90deg,rgba(215,25,32,.25),var(--carbon-2))}
+.standings tbody tr.is-rangers td{color:#fff;font-weight:600}
+.standings .pts{font-family:var(--f-title);color:var(--rojo-200);font-weight:700}
