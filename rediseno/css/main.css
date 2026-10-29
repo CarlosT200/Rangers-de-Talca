@@ -422,6 +422,7 @@ body.menu-open{overflow:hidden}
 .article-body ul{color:var(--gris);margin:0 0 1.2rem;padding-left:1.2rem;line-height:1.7}
 .article-body li{margin-bottom:.4rem}
 .article-body li strong{color:var(--blanco)}
+.article-body p a,.article-body li a{color:var(--rojo-200);text-decoration:underline;word-break:break-word}
 
 .article-source{display:flex;align-items:center;gap:1rem;flex-wrap:wrap;justify-content:space-between;
   margin:2.2rem 0 0;padding:1.2rem 1.4rem;border-radius:var(--radio);background:var(--carbon);border:1px solid var(--linea)}
