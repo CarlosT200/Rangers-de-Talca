@@ -5,6 +5,9 @@
   "use strict";
   var reduce = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
   var DATA = window.RANGERS_DATA || {};
+  /* Solo ocultamos los "reveal" si este JS corre; si no carga, el
+     contenido queda visible (sin animación). */
+  document.documentElement.classList.add("reveal-on");
 
   /* ---------- Menú móvil con foco atrapado ---------- */
   var toggle = document.getElementById("navToggle");

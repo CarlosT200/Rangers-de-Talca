@@ -342,11 +342,11 @@ body.menu-open{overflow:hidden}
 .to-top:hover{background:var(--rojo-200)}
 
 /* ---------------- Reveal ---------------- */
-.js .reveal{opacity:0;transform:translateY(26px);transition:opacity .6s var(--ease),transform .6s var(--ease);transition-delay:var(--d,0s)}
-.js .reveal.is-visible{opacity:1;transform:none}
+.reveal-on .reveal{opacity:0;transform:translateY(26px);transition:opacity .6s var(--ease),transform .6s var(--ease);transition-delay:var(--d,0s)}
+.reveal-on .reveal.is-visible{opacity:1;transform:none}
 
 @media (prefers-reduced-motion: reduce){
-  .js .reveal{opacity:1!important;transform:none!important}
+  .reveal-on .reveal{opacity:1!important;transform:none!important}
   .ticker-track,.marquee-track,.hero-glow,.match-badge img,.history-art img,.hero-scroll span,.tv-play::before{animation:none!important}
   *{animation-duration:.001ms!important;animation-iteration-count:1!important;transition-duration:.01ms!important}
 }
