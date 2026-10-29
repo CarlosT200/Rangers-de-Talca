@@ -177,8 +177,12 @@ body.menu-open{overflow:hidden}
   background:linear-gradient(100deg,#2a0609,#140609 52%,#0b0b0d);
   border-top:1px solid var(--linea);border-bottom:1px solid var(--linea)}
 /* motivo de escudos rojinegros */
-.next-match::before{content:"";position:absolute;inset:0;z-index:0;opacity:.06;pointer-events:none;
-  background:url(../assets/img/escudo.png) repeat;background-size:64px}
+.next-match::before{content:"";position:absolute;inset:0;z-index:0;opacity:.15;pointer-events:none;
+  background:url(../assets/img/escudo.png) repeat-x center;background-size:62px 62px;
+  -webkit-mask-image:linear-gradient(90deg,transparent,#000 7%,#000 93%,transparent);
+  mask-image:linear-gradient(90deg,transparent,#000 7%,#000 93%,transparent);
+  animation:escudosScroll 20s linear infinite}
+@keyframes escudosScroll{from{background-position:0 center}to{background-position:62px center}}
 .next-match::after{content:"";position:absolute;left:0;top:0;bottom:0;width:5px;z-index:1;
   background:linear-gradient(var(--rojo),var(--rojo-200))}
 .next-match-inner{position:relative;z-index:2;display:flex;flex-wrap:wrap;align-items:center;gap:.9rem 1.5rem;padding:1.1rem 0}
