@@ -12,6 +12,8 @@ Todas las imágenes provienen del **sitio oficial del club** (`www.rangersdetalc
 | `news-femenino.png` | `/wp-content/uploads/2026/10/Martina-e-Isidora-mundialistas-rojinegras-768x960.png` | No indicado | Noticia (fútbol femenino) | © Rangers de Talca · pendiente |
 | `news-formativo.jpg` | `/wp-content/uploads/2026/10/DSC5296-768x512.jpg` | No indicado | Noticia (fútbol formativo) y miniatura Rangers TV | © Rangers de Talca · pendiente |
 | `news-convenio.jpg` | `/wp-content/uploads/2026/10/Firma-de-Convenio-con-Rangers-7-768x512.jpg` | No indicado | Noticia (club/convenio) | © Rangers de Talca · pendiente |
+| `formativo-santacruz.webp` | Entregada por el propietario | No indicado | Noticia (fútbol formativo) y tarjeta en portada | © Rangers de Talca · pendiente |
+| `estadio.jpg` | `commons.wikimedia.org` → `Estadio_Fiscal_de_Talca_2024.jpg` | **ElPabloRN** | Página de Historia | **CC BY 4.0** (libre, con atribución) |
 
 ## Pendientes de optimización
 - `news-femenino.png` (~1,0 MB, PNG 768×960): convertir a WebP/JPEG en una pasada posterior para aligerar.
@@ -19,6 +21,6 @@ Todas las imágenes provienen del **sitio oficial del club** (`www.rangersdetalc
 
 ## Datos del club usados (verificados)
 - Fundación: **2 de noviembre de 1902**, Talca; apodos **“El Gigante del Maule” / “Piducano” / “Rojinegros”** (no “El Decano”).
-- Estadio: **Estadio Fiscal de Talca**.
+- Estadio: **Estadio Iván Azócar Bernales** (antes "Estadio Fiscal de Talca").
 - Hito internacional: **Copa Libertadores 1970**.
 - Fuentes: sitio oficial del club y Wikipedia (consultadas 2026-10-29). No se inventaron resultados, fechas de partidos, precios ni plantel.
