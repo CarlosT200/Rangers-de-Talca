@@ -56,6 +56,20 @@
       });
     }, { rootMargin:"0px 0px -8% 0px", threshold:.12 });
     reveals.forEach(function(el){ io.observe(el); });
+
+    /* Failsafe: si la pestaña carga en segundo plano o el observer no dispara,
+       muestra igual lo que ya está en pantalla (el scroll revela el resto). */
+    var revealInView = function(){
+      var vh = window.innerHeight || document.documentElement.clientHeight;
+      reveals.forEach(function(el){
+        if (el.classList.contains("is-visible")) return;
+        var r = el.getBoundingClientRect();
+        if (r.top < vh * 0.98 && r.bottom > 0){ el.classList.add("is-visible"); }
+      });
+    };
+    window.addEventListener("load", revealInView);
+    document.addEventListener("visibilitychange", function(){ if (!document.hidden) revealInView(); });
+    setTimeout(revealInView, 1000);
   }
 
   /* ---------- Header: estado "scrolled" + barra de progreso ---------- */
