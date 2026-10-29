@@ -108,19 +108,30 @@
       </div>
     </div>
     <a class="hero-scroll reveal" href="#noticias" style="--d:.5s" aria-label="Bajar a noticias"><span></span></a>
-    <div class="hero-stripe" aria-hidden="true"></div>
   </section>
 
-  <!-- ======================= MÓDULO PARTIDO ======================= -->
-  <section class="match" aria-label="Próximo encuentro">
-    <div class="wrap match-inner reveal">
-      <div class="match-badge" aria-hidden="true"><img src="assets/img/escudo.png" width="56" height="56" alt=""></div>
-      <div class="match-info">
-        <p class="match-kicker">Próximo encuentro</p>
-        <p class="match-title">Por confirmar</p>
-        <p class="match-note">La fecha y el rival se publicarán cuando el club los confirme oficialmente.</p>
+  <!-- ======================= PRÓXIMO PARTIDO ======================= -->
+  <section class="next-match" id="nextMatch" data-kickoff="2026-11-01T17:00:00-03:00" aria-label="Próximo partido">
+    <div class="wrap next-match-inner reveal">
+      <div class="nm-head">
+        <span class="nm-kicker">Próximo partido</span>
+        <span class="nm-comp">Liga de Ascenso 2026</span>
       </div>
-      <a class="btn btn-outline" href="https://www.rangersdetalca.com/portal/" target="_blank" rel="noopener">Ver calendario</a>
+      <div class="nm-mid">
+        <div class="nm-teams">
+          <span class="nm-team"><img src="assets/img/escudo.png" width="40" height="40" alt="Rangers de Talca"><span class="nm-name">Rangers</span></span>
+          <span class="nm-vs">vs</span>
+          <span class="nm-team"><span class="nm-crest" aria-hidden="true">SC</span><span class="nm-name">D. Santa Cruz</span></span>
+        </div>
+        <span class="nm-when">Dom 1 nov · Visita · Hora por confirmar</span>
+      </div>
+      <div class="nm-countdown" aria-label="Cuenta regresiva para el próximo partido">
+        <div class="cd"><span class="cd-n" data-cd="days">--</span><span class="cd-l">días</span></div>
+        <div class="cd"><span class="cd-n" data-cd="hours">--</span><span class="cd-l">hrs</span></div>
+        <div class="cd"><span class="cd-n" data-cd="mins">--</span><span class="cd-l">min</span></div>
+        <div class="cd"><span class="cd-n" data-cd="secs">--</span><span class="cd-l">seg</span></div>
+      </div>
+      <a class="btn btn-outline btn-sm nm-cta" href="calendario.html">Ver calendario</a>
     </div>
   </section>
 
@@ -292,7 +303,7 @@
   <div class="wrap footer-grid">
     <div class="footer-brand">
       <img src="assets/img/escudo.png" width="54" height="54" alt="Escudo de Rangers de Talca">
-      <p><strong>Club Social de Deportes Rangers</strong><br>Talca, Región del Maule, Chile · Desde 1902<br><span class="foot-tag">El Gigante del Maule · Rojinegros</span></p>
+      <p><strong>Club Social de Deportes Rangers</strong><br>Talca, Región del Maule, Chile · Desde 1902<br><span class="foot-tag">El Gigante del Maule</span></p>
     </div>
     <nav class="footer-nav" aria-label="Enlaces del club">
       <h3>Club</h3>

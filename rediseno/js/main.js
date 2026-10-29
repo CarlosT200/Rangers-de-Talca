@@ -137,4 +137,38 @@
   }
   seamless(document.querySelector(".ticker-track"));
   seamless(document.querySelector(".marquee-track"));
+
+  /* ---------- Cuenta regresiva del próximo partido ---------- */
+  var nm = document.getElementById("nextMatch");
+  if (nm){
+    var kickoff = nm.getAttribute("data-kickoff");
+    var target = kickoff ? new Date(kickoff).getTime() : NaN;
+    var wrap = nm.querySelector(".nm-countdown");
+    var cd = {
+      days: nm.querySelector('[data-cd="days"]'),
+      hours: nm.querySelector('[data-cd="hours"]'),
+      mins: nm.querySelector('[data-cd="mins"]'),
+      secs: nm.querySelector('[data-cd="secs"]')
+    };
+    var pad = function(n){ return (n < 10 ? "0" : "") + n; };
+    var timer;
+    var tick = function(){
+      var diff = target - Date.now();
+      if (diff <= 0){
+        if (wrap) wrap.innerHTML = '<span class="nm-live">¡Hoy juega Rangers!</span>';
+        if (timer) clearInterval(timer);
+        return;
+      }
+      var d = Math.floor(diff / 86400000);
+      var h = Math.floor((diff % 86400000) / 3600000);
+      var m = Math.floor((diff % 3600000) / 60000);
+      var s = Math.floor((diff % 60000) / 1000);
+      if (cd.days) cd.days.textContent = d;
+      if (cd.hours) cd.hours.textContent = pad(h);
+      if (cd.mins) cd.mins.textContent = pad(m);
+      if (cd.secs) cd.secs.textContent = pad(s);
+    };
+    if (!isNaN(target)){ tick(); timer = setInterval(tick, 1000); }
+    else if (wrap){ wrap.innerHTML = '<span class="nm-live">Por confirmar</span>'; }
+  }
 })();
