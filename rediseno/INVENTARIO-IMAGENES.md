@@ -18,7 +18,7 @@ Todas las imágenes provienen del **sitio oficial del club** (`www.rangersdetalc
 - Evaluar `srcset`/tamaños responsivos y versiones WebP de todas las fotos para la entrega B.
 
 ## Datos del club usados (verificados)
-- Fundación: **2 de noviembre de 1902**, Talca; raíces escocesas; apodo **“El Decano”**.
+- Fundación: **2 de noviembre de 1902**, Talca; apodos **“El Gigante del Maule” / “Piducano” / “Rojinegros”** (no “El Decano”).
 - Estadio: **Estadio Fiscal de Talca**.
 - Hito internacional: **Copa Libertadores 1970**.
 - Fuentes: sitio oficial del club y Wikipedia (consultadas 2026-10-29). No se inventaron resultados, fechas de partidos, precios ni plantel.
